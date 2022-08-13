@@ -76,3 +76,19 @@ assert binary.cursor == 0x1001
 dis_view.move_by(1) # Lets assume the next instruction is 4 bytes long
 assert binary.cursor == 0x1005
 ```
+
+## Analyzers
+
+There are many tools that analyze binaries.
+FEB Tries to allow use of any of them.
+
+When wrapping an analysis tool, we make use of the `Analyzer` and `Session` classes.
+
+An `Analyzer` represents a global analysis type, and a `Session` is specific for one binary.
+
+```py
+analyzer = CoolAnalyzer(options)
+
+session1 = analyzer.load("./binary1")
+session2 = analyzer.load("./binary2")
+```
