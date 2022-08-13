@@ -53,3 +53,26 @@ The main usage of `Binary` is to share a `Cursor` between different `View`s.
 binary = Binary("executable.bin")
 binary.cursor += 1
 ```
+
+## Code View
+
+The exploration occurs inside a `View`.
+A `View` can be a disassembly, decompilation or any lexical representation a binary (even raw bytes).
+
+```py
+view = DisassemblyView(binary)
+```
+
+To move seamlessly between views, the `Cursor` is the binary offset in bytes, independent of views.
+
+```py
+binary.cursor = 0x1000
+byte_view = BytesView(binary)
+dis_view = DisassemblyView(binary)
+
+byte_view.move_by(1)
+assert binary.cursor == 0x1001
+
+dis_view.move_by(1) # Lets assume the next instruction is 4 bytes long
+assert binary.cursor == 0x1005
+```
