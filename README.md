@@ -26,3 +26,5 @@ Traveling to the next `lea rdi` instruction will get us to location `6`.
 Now moving 1 instruction will travel to the next expression (`7`).
 
 After traveling, we axtract the value of the second operand - `0`
+
+More info in [API.md](API.md).
