@@ -25,3 +25,21 @@ rebased_c.value  # 16
 rebased_c += 1 # RebasedCursor(17)
 c.value  # 7
 ```
+
+## Expressions and Operands
+
+The extraction process is performed using `Expression`s and `Operand`s.
+An `Expression` represents a singular code unit, that holds `Operand`s.
+
+For example, in disassembly, an expression can be an assembly instruction:
+
+```py
+expression = AsmInstruction("mov ax, 1")
+```
+
+And operands can be any part of the expression that can produce a value:
+
+```py
+# [X86Register("ax"), Integer(1)]
+operands = expression.get_operands()
+```
