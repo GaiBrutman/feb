@@ -43,3 +43,13 @@ And operands can be any part of the expression that can produce a value:
 # [X86Register("ax"), Integer(1)]
 operands = expression.get_operands()
 ```
+
+## Binary
+
+A binary holds shared information about the binary state.
+The main usage of `Binary` is to share a `Cursor` between different `View`s.
+
+```py
+binary = Binary("executable.bin")
+binary.cursor += 1
+```
