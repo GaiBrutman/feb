@@ -1,0 +1,24 @@
+name: MKDocs Deploy
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - name: Install dependencies
+        run: |
+          pip install mkdocs
+          pip install "mkdocstrings[python]"
+          pip install mkdocs-gen-files
+          pip install mkdocs-literate-nav
+          pip install mkdocs-material
+          pip install markdown-exec
+          pip install mkdocs-section-index
+      - name: Deploy mkdocs to github.io
+        run: mkdocs gh-deploy --force --clean --verbose
