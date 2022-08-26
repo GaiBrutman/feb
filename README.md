@@ -1,4 +1,4 @@
-# feb
+# Welcome to FEB
 
 FEB Explores Binaries.
 

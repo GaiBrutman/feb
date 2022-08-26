@@ -1,0 +1,69 @@
+site_name: FEB
+site_description: "FEB Explores Binaries."
+repo_url: "https://github.com/GaiBrutman/feb"
+repo_name: "GaiBrutman/feb"
+watch: [README.md, feb]
+
+nav:
+- Home:
+  - Overview: README.md
+  - API: API.md
+  - License: license.md
+# defer to gen-files + literate-nav
+- Code Reference: reference/
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+theme:
+  name: material
+  features:
+  - navigation.tabs
+  - navigation.tabs.sticky
+  - navigation.top
+  palette:
+  - media: "(prefers-color-scheme: light)"
+    scheme: default
+    primary: teal
+    toggle:
+      icon: material/weather-sunny
+      name: Switch to dark mode
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate
+    # primary: black
+    accent: lime
+    toggle:
+      icon: material/weather-night
+      name: Switch to light mode
+
+plugins:
+- search
+- markdown-exec
+- section-index
+- mkdocstrings:
+    watch:
+    - feb
+    handlers:
+      python:
+        import:
+        - https://docs.python.org/3/objects.inv
+        - https://installer.readthedocs.io/en/stable/objects.inv  # demonstration purpose in the docs
+        - https://mkdocstrings.github.io/autorefs/objects.inv
+        options:
+          docstring_style: sphinx
+          docstring_options:
+            ignore_init_summary: yes
+          merge_init_into_class: yes
+          show_submodules: no
+          separate_signature: yes
+          show_source: no
+          show_root_full_path: no
+- gen-files:
+    scripts:
+    - docs/gen_ref_nav.py
+- literate-nav:
+    nav_file: SUMMARY.md
