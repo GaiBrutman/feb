@@ -1,6 +1,6 @@
 # FEB API
 
-As stated in [README.md](README.md), FEB travels inside a binary, then extracts values from it.
+As stated [before](README.md), FEB travels inside a binary, then extracts values from it.
 
 ## Cursor
 
